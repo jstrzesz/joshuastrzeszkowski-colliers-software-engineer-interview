@@ -5,8 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "lint": "./node_modules/.bin/eslint ./",
-    "dev": "nodemon server.js"
+    "lint": "./node_modules/.bin/eslint ./"
   },
   "author": "",
   "license": "ISC",
