@@ -3,7 +3,13 @@ import { getDb } from './db.js';
 const pokemon = getDb().collection('pokemon');
 
 const aggCursor = pokemon.aggregate([
-  { $match: {} },
+  { $match: {
+    type: 'Grass'
+  }},
+  { $group: {
+    _id: 'Grass',
+    totalOfGrassHP: { $sum: '$base.HP'}
+  }}
   // Your aggregation stages go here
 ]);
 
