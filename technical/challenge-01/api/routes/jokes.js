@@ -1,8 +1,7 @@
 export function get(jokeService) {
   return async (request, response) => {
     try {
-      const jokes = await jokeService.get();
-      console.log(jokes, 'line 5')
+      const jokes = await jokeService.get(request.query.term);
       response.send({
         data: jokes,
       });
