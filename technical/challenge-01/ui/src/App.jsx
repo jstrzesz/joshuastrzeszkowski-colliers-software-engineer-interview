@@ -1,8 +1,6 @@
 import "./App.css";
 import { useEffect, useState } from "react";
 
-let gettingJoke = false;
-
 function App() {
 
   const [jokes, setJokes] = useState([]);
