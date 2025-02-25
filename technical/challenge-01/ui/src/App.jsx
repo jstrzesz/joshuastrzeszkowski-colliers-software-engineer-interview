@@ -25,6 +25,19 @@ function App() {
     }
   }
 
+  const setLike = (joke, bool) => {
+    joke.like = bool;
+    return joke;
+  }
+
+  const updateLikes = (joke, bool, index) => {
+    const newJoke = setLike(joke, bool);
+    let updatedJokes = jokes.slice();
+    updatedJokes.splice(index, 1, newJoke);
+    setJokes(updatedJokes)
+    console.log(jokes, 'line 37')
+  }
+
   useEffect(() => {
     getJokes();
   }, []);
@@ -33,6 +46,9 @@ function App() {
     <div className="App">
       Ready for a funny joke?
       <div className="joke">{ jokes.length ? jokes[rando].joke : `¯\_(ツ)_/¯`}</div>
+      {jokes.length && jokes[rando].like ? <p>	&#128514;</p> : null}
+      <button onClick={() => updateLikes(jokes[rando], true, rando)}>Like</button>
+      <button onClick={() => updateLikes(jokes[rando], false, rando)}>Dislike</button>
       <button onClick={() => setRando(randomNum(jokes.length -1))}>Different joke?</button>
       <input onChange={(e) => setTerm(e.target.value)}></input>
       <button onClick={() => getJokes(term)}>Search for specific joke</button>

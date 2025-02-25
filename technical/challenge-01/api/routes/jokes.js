@@ -2,8 +2,9 @@ export function get(jokeService) {
   return async (request, response) => {
     try {
       const jokes = await jokeService.get(request.query.term);
+      const likedJokes = jokes.map(({id, joke}) => ({id, joke, like: false}));
       response.send({
-        data: jokes,
+        data: likedJokes,
       });
     } catch (err) {
       console.error(err);
