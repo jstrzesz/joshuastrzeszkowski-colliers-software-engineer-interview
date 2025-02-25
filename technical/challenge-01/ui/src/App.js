@@ -5,11 +5,13 @@ let gettingJoke = false;
 
 function App() {
 
+  const [joke, setJoke] = useState('');
+
   const getJoke = async () => {
     try {
       const res = await fetch('http://localhost:3030/jokes');
       const parsed = await res.json();
-      console.log(parsed);
+      setJoke(parsed.data[0].attributes.joke)
     } catch (e) {
       console.error(e)
     }
@@ -21,7 +23,7 @@ function App() {
   return (
     <div className="App">
       Ready for a funny joke?
-      <div className="joke">¯\_(ツ)_/¯</div>
+      <div className="joke">{ joke ? joke : `¯\_(ツ)_/¯`}</div>
     </div>
   );
 }
