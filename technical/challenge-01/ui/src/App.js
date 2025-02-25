@@ -5,13 +5,20 @@ let gettingJoke = false;
 
 function App() {
 
-  const [joke, setJoke] = useState('');
+  const [jokes, setJokes] = useState([]);
+  const [rando, setRando] = useState(0);
+
+  const randomNum = (num) => {
+    return Math.floor(Math.random() * num);
+  }
 
   const getJoke = async () => {
     try {
       const res = await fetch('http://localhost:3030/jokes');
       const parsed = await res.json();
-      setJoke(parsed.data[0].attributes.joke)
+      console.log(parsed)
+      setJokes(parsed.data)
+      setRando(randomNum(19))
     } catch (e) {
       console.error(e)
     }
@@ -20,10 +27,11 @@ function App() {
   useEffect(() => {
     getJoke();
   }, []);
+
   return (
     <div className="App">
       Ready for a funny joke?
-      <div className="joke">{ joke ? joke : `¯\_(ツ)_/¯`}</div>
+      <div className="joke">{ jokes.length ? jokes[rando].joke : `¯\_(ツ)_/¯`}</div>
     </div>
   );
 }

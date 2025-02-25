@@ -1,10 +1,10 @@
 export function get(jokeService) {
   return async (request, response) => {
     try {
-      const joke = await jokeService.get();
-      console.log(joke, 'line 5')
+      const jokes = await jokeService.get();
+      console.log(jokes, 'line 5')
       response.send({
-        data: [{ type: 'joke', attributes: { joke } }],
+        data: jokes,
       });
     } catch (err) {
       console.error(err);
