@@ -15,7 +15,6 @@ function App() {
     try {
       const res = await fetch(`http://localhost:3030/jokes${term ? `?term=${term}` : ''}`);
       const parsed = await res.json();
-      console.log(parsed)
       setJokes(parsed.data)
       setRando(randomNum(parsed.data.length -1))
     } catch (e) {
@@ -33,7 +32,6 @@ function App() {
     let updatedJokes = jokes.slice();
     updatedJokes.splice(index, 1, newJoke);
     setJokes(updatedJokes)
-    console.log(jokes, 'line 37')
   }
 
   useEffect(() => {
