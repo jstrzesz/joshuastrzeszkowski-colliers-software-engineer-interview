@@ -1,0 +1,18 @@
+{
+  "name": "challenge-02",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --no-warnings aggregate.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^4.7.0",
+    "mongodb-memory-server": "^8.7.2",
+    "node-fetch": "^3.2.10"
+  }
+}
