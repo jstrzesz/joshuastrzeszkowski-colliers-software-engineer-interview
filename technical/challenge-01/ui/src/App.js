@@ -32,6 +32,7 @@ function App() {
     <div className="App">
       Ready for a funny joke?
       <div className="joke">{ jokes.length ? jokes[rando].joke : `¯\_(ツ)_/¯`}</div>
+      <button onClick={() => setRando(randomNum(19))}>Different joke?</button>
     </div>
   );
 }
